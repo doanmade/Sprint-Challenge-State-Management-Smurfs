@@ -1,16 +1,22 @@
-import React, { Component } from "react";
+import React from "react";
+import { useSelector } from "react-redux";
 import "./App.css";
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <h1>SMURFS! 2.0 W/ Redux</h1>
-        <div>Welcome to your state management version of Smurfs!</div>
-        <div>Start inside of your `src/index.js` file!</div>
-        <div>Have fun!</div>
+import SmurfCard from "./SmurfCard";
+import SmurfForm from "./SmurfForm";
+
+const App = () => {
+  const smurfs = useSelector(state => state.smurfs);
+
+  return (
+    <div>
+      <SmurfForm />
+      <div className="smurfCardDisplay">
+        {smurfs.map(smurf => (
+          <SmurfCard key={smurf.id} smurf={smurf} />
+        ))}
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default App;
