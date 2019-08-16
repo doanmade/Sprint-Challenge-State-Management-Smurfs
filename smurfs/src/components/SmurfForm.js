@@ -3,11 +3,15 @@ import React from "react";
 import { connect } from "react-redux";
 import { addToVillage, getSmurf } from "../actions";
 
-const SmurfForm = (addToVillage, getSmurf) => {
+const SmurfForm = props => {
   return (
     <div className="smurfForm">
       <Form>
-        <button className="button" type="button" onClick={() => getSmurf()}>
+        <button
+          className="button"
+          type="button"
+          onClick={() => props.getSmurf()}
+        >
           <span>View Village</span>
         </button>
         <label>
