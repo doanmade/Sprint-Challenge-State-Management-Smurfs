@@ -6,17 +6,15 @@ import SmurfForm from "./SmurfForm";
 
 const App = () => {
   const smurfs = useSelector(state => state.smurfs);
-  const error = useSelector(state => state.error);
 
   return (
     <div>
       <SmurfForm />
-
-      {error !== "" ? <h2>{error}</h2> : ""}
-
-      {smurfs.map(smurf => (
-        <SmurfCard key={smurf.id} smurf={smurf} />
-      ))}
+      <div className="smurfCardDisplay">
+        {smurfs.map(smurf => (
+          <SmurfCard key={smurf.id} smurf={smurf} />
+        ))}
+      </div>
     </div>
   );
 };

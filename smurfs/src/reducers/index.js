@@ -16,67 +16,57 @@ const initialState = {
       id: 0
     }
   ],
-  error: "",
-  callingAPI: false
+  error: ""
 };
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_SMURFS_START:
-      return {
-        ...state,
-        callingAPI: true,
-        error: ""
-      };
+      return { ...state, error: "" };
     case FETCH_SMURFS_SUCCESS:
       return {
         ...state,
         smurfs: action.payload,
-        callingAPI: false,
-        error: ""
+        error: "",
+        value: ""
       };
+
     case FETCH_SMURFS_FAIL:
       return {
         ...state,
-        callingAPI: false,
         error: `${action.payload.status} ${action.payload.statusText}`
       };
     case POST_SMURFS_START:
       return {
         ...state,
-        callingAPI: true,
         error: ""
       };
     case POST_SMURFS_SUCCESS:
       return {
         ...state,
         smurfs: action.payload,
-        callingAPI: false,
-        error: ""
+        error: "",
+        value: ""
       };
     case POST_SMURFS_FAIL:
       return {
         ...state,
-        callingAPI: false,
         error: `${action.payload.status} ${action.payload.statusText}`
       };
     //   case REMOVE_SMURFS_START:
     //       return {
     //           ...state,
-    //           callingAPI: true,
     //           error: ""
     //       };
-    //   case REMOVE_SMURFS_SUCCESS:
-    //       return {
-    //           ...state,
-    //           smurfs: state.smurfs.fliter(action.payload,
-    //               smurfs => smurfs.id !== action.payload.id)
-
+    // case REMOVE_SMURFS_SUCCESS:
+    //   return {
+    //     ...state,
+    //     smurfs: action.payload,
+    //     error: ""
     //   };
     //   case REMOVE_SMURFS_FAIL:
     //       return {
     //           ...state,
-    //           callingAPI: false,
     //           error: `${action.payload.status} ${action.payload.statusText}`
     //       };
     default:

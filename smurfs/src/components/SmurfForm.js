@@ -1,12 +1,15 @@
 import { Field, Form, withFormik } from "formik";
 import React from "react";
 import { connect } from "react-redux";
-import { addToVillage } from "../actions";
+import { addToVillage, getSmurf } from "../actions";
 
-const SmurfForm = () => {
+const SmurfForm = (addToVillage, getSmurf) => {
   return (
     <div className="smurfForm">
       <Form>
+        <button className="button" type="button" onClick={() => getSmurf()}>
+          <span>View Village</span>
+        </button>
         <label>
           <h4>Name:</h4>
           <Field type="text" name="name" placeholder="Smurf name" />
@@ -21,13 +24,15 @@ const SmurfForm = () => {
         </label>
         <br />
         <br />
-        <button type="submit">Add to Village</button>
+        <button className="button" type="button" onClick={() => addToVillage()}>
+          <span>Add to Village</span>
+        </button>
       </Form>
     </div>
   );
 };
 
-const AddForm = withFormik({
+const SmurfForms = withFormik({
   mapPropsToValue({ name, age, height }) {
     return {
       name: name || "",
@@ -45,5 +50,5 @@ const AddForm = withFormik({
 
 export default connect(
   null,
-  { addToVillage }
-)(AddForm);
+  { addToVillage, getSmurf }
+)(SmurfForms);
