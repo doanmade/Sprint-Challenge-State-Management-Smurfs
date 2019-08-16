@@ -10,18 +10,6 @@ export const POST_SMURFS_FAIL = "POST_SMURFS_FAIL";
 
 // export const REMOVE_SMURFS_SUCCESS = "REMOVE_SMURFS_SUCCESS";
 
-export const getSmurfVillage = () => {
-  return dispatch => {
-    dispatch({ type: FETCH_SMURFS_START });
-    axios
-      .get(`http://localhost:3333/smurfs`)
-      .then(res => dispatch({ type: FETCH_SMURFS_SUCCESS, payload: res.data }))
-      .catch(err =>
-        dispatch({ type: FETCH_SMURFS_FAIL, payload: err.response })
-      );
-  };
-};
-
 export const addToVillage = newSmurf => {
   return dispatch => {
     dispatch({ type: POST_SMURFS_START });

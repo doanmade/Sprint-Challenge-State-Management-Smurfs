@@ -38,7 +38,7 @@ const AddForm = withFormik({
 
   handleSubmit(values, { props, resetForm, setSubmitting }) {
     props.addToVillage(values);
-    resetForm();
+    resetForm("");
     setSubmitting(false);
   }
 })(SmurfForm);
